@@ -24,9 +24,14 @@
     <link
       href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
       rel="stylesheet"
-      type="css/text/css"
+      type="text/css"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/my-styles.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/my-styles.css" rel="stylesheet" />
   </head>
@@ -155,9 +160,130 @@
               allowfullscreen
             ></iframe>
           </div>
+          <div class="h5 pt-3">Survey</div>
+          <div class="mx-0 mx-sm-auto">
+            <div class="card">
+              <div class="card-body">
+                <div class="text-center">
+                  <i class="fa-brands fa-java fa-5x mb-3"></i>
+                
+                  <p>
+                    <strong>What is the best IDE for java?</strong>
+                  </p>
+                  <p>
+                    Let me know your favorite IDE taking the survey below.
+                    
+                  </p>
+                </div>
+          
+                <hr />
+          
+                <form class="px-4" action="" id="survey-form">
+                  <p class="text-center"><strong>My favorite IDE:</strong></p>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox1" />
+                    <label class="form-check-label" for="checkbox1">
+                      Eclipse
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox2" />
+                    <label class="form-check-label" for="checkbox2">
+                      NetBeans
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox3" />
+                    <label class="form-check-label" for="checkbox3">
+                      IntelliJ
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox4" />
+                    <label class="form-check-label" for="checkbox4">
+                      JDeveloper
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox5" />
+                    <label class="form-check-label" for="checkbox5">
+                      None of the above. I code in machine language.
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer text-end" >
+                <button type="submit" class="btn btn-primary" form="survey-form">Submit</button>
+              </div>
+            </div>
+          </div>
+          <div class="h5 pt-3">Survey result</div>
+          <p>Eclipse</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>NetBeans</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>IntelliJ</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>JDeveloper</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>Code in machine language
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+          <div class="h6 pt-3">Thank you for taking the survey!</div>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+ 
+var noneOfAbove = function () {
+  let ele = document.getElementsByName("checkbox");
+  if (ele[ele.length - 1].checked == true) {
+    for (let i = 0; i < ele.length - 1; i++) {
+      ele[i].checked = false;
+    }
+  }
+};
+
+var surveyResult = function (e) {
+  e.preventDefault();
+  let ele = document.getElementsByName("checkbox");
+  console.log(ele);
+  for (let i = 0; i < ele.length; i++) {
+    if (ele[i].checked) {
+      resultArray[i] += 1;
+      voteSum += 1;
+    }
+  }
+
+  let progress = document.getElementsByClassName("progress-bar");
+  console.log(progress);
+  for (let i = 0; i < ele.length; i++) {
+    progress[i].setAttribute(
+      "style",
+      "width: " + Math.round((resultArray[i] / voteSum) * 100) + "%"
+    );
+    progress[i].textContent =
+      Math.round((resultArray[i] / voteSum) * 100) + "%";
+  }
+};
+
+var resultArray = [0, 0, 0, 0, 0, 0];
+var voteSum = 0;
+let surveyForm = document.getElementById("survey-form");
+document.addEventListener("change", noneOfAbove);
+surveyForm.addEventListener("submit", surveyResult);
+ 
+</script>
   </body>
 </html>
