@@ -1,3 +1,4 @@
+/* select by class */
 .intro {
   animation-name: fade-in;
   animation-duration: 1s;
@@ -49,7 +50,7 @@
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
   line-height: 0;
 }
-
+/* select child element */
 .box > img {
   width: 200%;
   height: calc(100% - 10vh);
@@ -65,6 +66,7 @@
   line-height: 2.6;
 }
 
+/* select by pseudo class */
 .box:hover {
   flex: 1 1 50%;
 }
@@ -77,7 +79,7 @@
   padding-bottom: 60px;
   padding-top: 60px;
 }
-
+/* select multiple class */
 .gallery-block .heading {
   margin-bottom: 50px;
   text-align: center;
@@ -89,6 +91,7 @@
   text-transform: uppercase;
 }
 
+/* select decendent element of a class */
 .gallery-block.cards-gallery h6 {
   font-size: 17px;
   font-weight: bold;
@@ -113,7 +116,7 @@
 .gallery-block.cards-gallery a {
   color: #212529;
 }
-
+/* select pseudo class in an element in a class */
 .gallery-block.cards-gallery a:hover {
   text-decoration: none;
 }
@@ -133,6 +136,7 @@
   width: 50px;
   height: 50px;
 }
+/* select adjacent element */
 h6 + p {
   font-size: smaller;
 }
